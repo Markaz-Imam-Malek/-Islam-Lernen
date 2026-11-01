@@ -202,45 +202,95 @@ button {
 <body>
 
 <!-- اختصارات مركز الإمام مالك -->
+<!-- اختصارات مركز الإمام مالك -->
 <div class="markaz-shortcuts">
 
-  <!-- القبلة -->
-  <a href="https://qiblafinder.withgoogle.com/"
-     target="_blank"
-     rel="noopener"
-     class="markaz-shortcut"
-     style="text-decoration:none;">
-
+  <button type="button" class="markaz-shortcut"
+    onclick="openMarkazLive('qibla')">
     <span class="markaz-shortcut-circle">🧭</span>
     <span>القبلة</span>
     <small>Qibla</small>
-  </a>
+  </button>
 
-  <!-- قناة المدينة -->
-  <a href="https://www.youtube.com/results?search_query=Madinah+Live+official"
-     target="_blank"
-     rel="noopener"
-     class="markaz-shortcut"
-     style="text-decoration:none;">
-
+  <button type="button" class="markaz-shortcut"
+    onclick="openMarkazLive('madinah')">
     <span class="markaz-shortcut-circle">📺</span>
     <span>قناة المدينة</span>
     <small>Madinah TV</small>
-  </a>
+  </button>
 
-  <!-- قناة مكة -->
-  <a href="https://www.youtube.com/results?search_query=Makkah+Live+official"
-     target="_blank"
-     rel="noopener"
-     class="markaz-shortcut"
-     style="text-decoration:none;">
-
+  <button type="button" class="markaz-shortcut"
+    onclick="openMarkazLive('makkah')">
     <span class="markaz-shortcut-circle">🕋</span>
     <span>قناة مكة</span>
     <small>Makkah Live</small>
-  </a>
+  </button>
 
 </div>
+
+<!-- نافذة العرض داخل الموقع -->
+<div id="markaz-live-window"
+  style="display:none; position:fixed; inset:0; z-index:99999; background:#000000D9; padding:15px; overflow:auto;">
+
+  <div style="max-width:700px; margin:35px auto; background:#FFFCF6; border:2px solid #C6A66B; border-radius:16px; padding:14px;">
+
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:10px;">
+      <strong id="markaz-live-title" style="color:#315640; font-size:19px;">
+        البث المباشر
+      </strong>
+
+      <button onclick="closeMarkazLive()"
+        style="background:#315640; color:white; border:0; border-radius:9px; padding:9px 14px; font-size:16px;">
+        ✕ إغلاق
+      </button>
+    </div>
+
+    <div id="markaz-live-content" style="margin-top:14px;"></div>
+
+  </div>
+</div>
+
+<script>
+function openMarkazLive(type) {
+  const windowBox = document.getElementById("markaz-live-window");
+  const title = document.getElementById("markaz-live-title");
+  const content = document.getElementById("markaz-live-content");
+
+  windowBox.style.display = "block";
+
+  if (type === "qibla") {
+    title.textContent = "🧭 اتجاه القبلة | Qibla";
+    content.innerHTML =
+      '<iframe src="https://qiblafinder.withgoogle.com/" ' +
+      'style="width:100%;height:65vh;border:0;border-radius:10px;" ' +
+      'allow="geolocation" loading="lazy"></iframe>';
+  }
+
+  if (type === "madinah") {
+    title.textContent = "📺 قناة المدينة | Madinah TV";
+    content.innerHTML =
+      '<iframe src="https://quran.tv/radio/" ' +
+      'style="width:100%;height:65vh;border:0;border-radius:10px;" ' +
+      'allow="autoplay; fullscreen; picture-in-picture" ' +
+      'allowfullscreen></iframe>';
+  }
+
+  if (type === "makkah") {
+    title.textContent = "🕋 قناة مكة | Makkah Live";
+    content.innerHTML =
+      '<iframe src="https://quran.tv/radio/" ' +
+      'style="width:100%;height:65vh;border:0;border-radius:10px;" ' +
+      'allow="autoplay; fullscreen; picture-in-picture" ' +
+      'allowfullscreen></iframe>';
+  }
+}
+
+function closeMarkazLive() {
+  document.getElementById("markaz-live-window").style.display = "none";
+  document.getElementById("markaz-live-content").innerHTML = "";
+}
+</script>
+
 
 
 <!-- بطاقة مواقيت الصلاة - مركز الإمام مالك -->
