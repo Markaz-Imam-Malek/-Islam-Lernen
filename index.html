@@ -343,8 +343,10 @@ button {
 </script>
 
 
-<!-- حديث اليوم | Hadith des Tages 
-<!-- حديث اليوم - مركز الإمام مالك -->
+</script>
+
+<!-- حديث اليوم | Hadith des Tages -->
+<!-- مركز الإمام مالك -->
 <section id="daily-hadith" class="card" style="
   max-width:650px;
   margin:20px auto;
@@ -359,90 +361,215 @@ button {
 
   <div style="font-size:30px;margin-bottom:5px;">🌙</div>
 
-  <h2 style="
-    color:#315640;
-    font-size:25px;
-    margin:0 0 5px;
-  ">
+  <h2 style="color:#315640;font-size:25px;margin:0 0 5px;">
     حديث اليوم
   </h2>
 
-  <p style="
-    color:#80683D;
-    font-size:15px;
-    margin:0 0 18px;
-  ">
+  <p style="color:#80683D;font-size:15px;margin:0 0 18px;">
     Hadith des Tages
   </p>
 
-  <div style="
-    height:2px;
-    background:#C6A66B;
-    width:90px;
-    margin:0 auto 18px;
-  "></div>
+  <div style="height:2px;background:#C6A66B;width:90px;margin:0 auto 18px;"></div>
 
-  <p style="
-    color:#80683D;
-    font-weight:bold;
-    font-size:16px;
-    margin-bottom:12px;
-  ">
+  <p style="color:#80683D;font-weight:bold;font-size:16px;margin-bottom:12px;">
     قال رسول الله ﷺ
   </p>
 
-  <div style="
-    background:#EAF0E6;
-    border:1px solid #DCE5D7;
-    border-radius:18px;
-    padding:18px 12px;
-    margin:12px 0;
-  ">
-    <p id="hadith-arabic" dir="rtl" style="
-      color:#244936;
-      font-size:25px;
-      font-weight:bold;
-      line-height:2;
-      margin:0;
-    "></p>
+  <div style="background:#EAF0E6;border:1px solid #DCE5D7;border-radius:18px;padding:18px 12px;margin:12px 0;">
+    <p id="hadith-arabic" dir="rtl" style="color:#244936;font-size:25px;font-weight:bold;line-height:2;margin:0;"></p>
   </div>
 
-  <p id="hadith-german" style="
-    color:#315640;
-    font-size:17px;
-    line-height:1.9;
-    margin:18px 5px;
-  "></p>
+  <p id="hadith-german" style="color:#315640;font-size:17px;line-height:1.9;margin:18px 5px;"></p>
 
-  <div style="
-    height:1px;
-    background:#E4D8C5;
-    margin:18px 10px;
-  "></div>
+  <div style="height:1px;background:#E4D8C5;margin:18px 10px;"></div>
 
-  <p id="hadith-source" style="
-    color:#80683D;
-    font-size:13px;
-    line-height:1.7;
-    margin:10px 0;
-  "></p>
+  <p id="hadith-source" style="color:#80683D;font-size:13px;line-height:1.7;margin:10px 0;"></p>
 
-  <div style="
-    display:inline-block;
-    background:#EAF0E6;
-    color:#315640;
-    border:1px solid #DCE5D7;
-    border-radius:20px;
-    padding:8px 18px;
-    font-size:13px;
-    margin-top:8px;
-  ">
+  <div style="display:inline-block;background:#EAF0E6;color:#315640;border:1px solid #DCE5D7;border-radius:20px;padding:8px 18px;font-size:13px;margin-top:8px;">
     <span id="hadith-number"></span> / 30
   </div>
 
 </section>
 
+<!-- الأحاديث الثلاثون -->
+<script>
+(function () {
+  const hadiths = [
+    {
+      ar:"مَنْ لَا يَرْحَمْ لَا يُرْحَمْ",
+      de:"Wer kein Erbarmen zeigt, dem wird kein Erbarmen erwiesen.",
+      source:"صحيح البخاري وصحيح مسلم"
+    },
+    {
+      ar:"إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ",
+      de:"Die Taten werden entsprechend den Absichten beurteilt.",
+      source:"صحيح البخاري وصحيح مسلم"
+    },
+    {
+      ar:"الْكَلِمَةُ الطَّيِّبَةُ صَدَقَةٌ",
+      de:"Ein gutes Wort ist eine Spende.",
+      source:"صحيح البخاري وصحيح مسلم"
+    },
+    {
+      ar:"لَا تَغْضَبْ",
+      de:"Werde nicht zornig.",
+      source:"صحيح البخاري"
+    },
+    {
+      ar:"الدِّينُ النَّصِيحَةُ",
+      de:"Die Religion ist aufrichtiger guter Rat.",
+      source:"صحيح مسلم"
+    },
+    {
+      ar:"مَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الْآخِرِ فَلْيَقُلْ خَيْرًا أَوْ لِيَصْمُتْ",
+      de:"Wer an Allah und den Jüngsten Tag glaubt, soll Gutes sprechen oder schweigen.",
+      source:"صحيح البخاري وصحيح مسلم"
+    },
+    {
+      ar:"الطُّهُورُ شَطْرُ الْإِيمَانِ",
+      de:"Die Reinheit ist die Hälfte des Glaubens.",
+      source:"صحيح مسلم"
+    },
+    {
+      ar:"لَا يُؤْمِنُ أَحَدُكُمْ حَتَّى يُحِبَّ لِأَخِيهِ مَا يُحِبُّ لِنَفْسِهِ",
+      de:"Keiner von euch glaubt vollkommen, bis er seinem Bruder wünscht, was er sich selbst wünscht.",
+      source:"صحيح البخاري وصحيح مسلم"
+    },
+    {
+      ar:"الْحَيَاءُ مِنَ الْإِيمَانِ",
+      de:"Schamhaftigkeit gehört zum Glauben.",
+      source:"صحيح البخاري وصحيح مسلم"
+    },
+    {
+      ar:"يَسِّرُوا وَلَا تُعَسِّرُوا",
+      de:"Macht es leicht und nicht schwer.",
+      source:"صحيح البخاري وصحيح مسلم"
+    },
+    {
+      ar:"إِنَّ اللَّهَ جَمِيلٌ يُحِبُّ الْجَمَالَ",
+      de:"Allah ist schön und liebt die Schönheit.",
+      source:"صحيح مسلم"
+    },
+    {
+      ar:"مَنْ غَشَّنَا فَلَيْسَ مِنَّا",
+      de:"Wer uns betrügt, gehört nicht zu uns.",
+      source:"صحيح مسلم"
+    },
+    {
+      ar:"الرَّاحِمُونَ يَرْحَمُهُمُ الرَّحْمَنُ",
+      de:"Den Barmherzigen erbarmt sich der Allerbarmer.",
+      source:"سنن أبي داود والترمذي"
+    },
+    {
+      ar:"اتَّقِ اللَّهَ حَيْثُمَا كُنْتَ",
+      de:"Fürchte Allah, wo immer du bist.",
+      source:"سنن الترمذي"
+    },
+    {
+      ar:"مَنْ لَا يَشْكُرُ النَّاسَ لَا يَشْكُرُ اللَّهَ",
+      de:"Wer den Menschen nicht dankt, dankt auch Allah nicht.",
+      source:"سنن أبي داود والترمذي"
+    },
+    {
+      ar:"الْبِرُّ حُسْنُ الْخُلُقِ",
+      de:"Güte ist guter Charakter.",
+      source:"صحيح مسلم"
+    },
+    {
+      ar:"أَفْضَلُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ",
+      de:"Die Besten unter euch sind diejenigen, die den Koran lernen und lehren.",
+      source:"صحيح البخاري"
+    },
+    {
+      ar:"مَنْ سَلَكَ طَرِيقًا يَلْتَمِسُ فِيهِ عِلْمًا سَهَّلَ اللَّهُ لَهُ بِهِ طَرِيقًا إِلَى الْجَنَّةِ",
+      de:"Wer einen Weg geht, um Wissen zu suchen, dem erleichtert Allah einen Weg ins Paradies.",
+      source:"صحيح مسلم"
+    },
+    {
+      ar:"لَا تَحْقِرَنَّ مِنَ الْمَعْرُوفِ شَيْئًا",
+      de:"Unterschätze keine gute Tat, auch wenn sie klein ist.",
+      source:"صحيح مسلم"
+    },
+    {
+      ar:"الْمُسْلِمُ مَنْ سَلِمَ الْمُسْلِمُونَ مِنْ لِسَانِهِ وَيَدِهِ",
+      de:"Ein Muslim ist derjenige, vor dessen Zunge und Hand die Muslime sicher sind.",
+      source:"صحيح البخاري وصحيح مسلم"
+    },
+    {
+      ar:"مَنْ صَمَتَ نَجَا",
+      de:"Wer schweigt, wird gerettet.",
+      source:"سنن الترمذي"
+    },
+    {
+      ar:"إِنَّ اللَّهَ رَفِيقٌ يُحِبُّ الرِّفْقَ",
+      de:"Allah ist gütig und liebt Güte und Sanftmut.",
+      source:"صحيح مسلم"
+    },
+    {
+      ar:"مَا نَقَصَتْ صَدَقَةٌ مِنْ مَالٍ",
+      de:"Eine Spende vermindert das Vermögen nicht.",
+      source:"صحيح مسلم"
+    },
+    {
+      ar:"الصَّلَاةُ نُورٌ",
+      de:"Das Gebet ist Licht.",
+      source:"صحيح مسلم"
+    },
+    {
+      ar:"اتَّقُوا النَّارَ وَلَوْ بِشِقِّ تَمْرَةٍ",
+      de:"Schützt euch vor dem Feuer, selbst mit einer halben Dattel als Spende.",
+      source:"صحيح البخاري وصحيح مسلم"
+    },
+    {
+      ar:"مَنْ لَا يَرْحَمِ النَّاسَ لَا يَرْحَمْهُ اللَّهُ",
+      de:"Wer den Menschen kein Erbarmen zeigt, dem wird Allah kein Erbarmen zeigen.",
+      source:"صحيح البخاري وصحيح مسلم"
+    },
+    {
+      ar:"الْيَدُ الْعُلْيَا خَيْرٌ مِنَ الْيَدِ السُّفْلَى",
+      de:"Die gebende Hand ist besser als die nehmende Hand.",
+      source:"صحيح البخاري وصحيح مسلم"
+    },
+    {
+      ar:"إِنَّ اللَّهَ كَتَبَ الْإِحْسَانَ عَلَى كُلِّ شَيْءٍ",
+      de:"Allah hat Güte und gutes Handeln in allen Dingen vorgeschrieben.",
+      source:"صحيح مسلم"
+    },
+    {
+      ar:"مَنْ كَانَ فِي حَاجَةِ أَخِيهِ كَانَ اللَّهُ فِي حَاجَتِهِ",
+      de:"Wer seinem Bruder hilft, dem hilft Allah.",
+      source:"صحيح البخاري وصحيح مسلم"
+    },
+    {
+      ar:"لَا يَدْخُلُ الْجَنَّةَ مَنْ لَا يَأْمَنُ جَارُهُ بَوَائِقَهُ",
+      de:"Derjenige, dessen Nachbar vor seinem Schaden nicht sicher ist, wird nicht ins Paradies eintreten.",
+      source:"صحيح مسلم"
+    }
+  ];
+
+  const start = new Date(2026, 0, 1);
+  const today = new Date();
+
+  const todayDate = new Date(
+    today.getFullYear(),
+    today.getMonth(),
+    today.getDate()
+  );
+
+  const days = Math.floor(
+    (todayDate - start) / 86400000
+  );
+
+  const index = ((days % 30) + 30) % 30;
+  const h = hadiths[index];
+
+  document.getElementById("hadith-arabic").textContent = "«" + h.ar + "»";
+  document.getElementById("hadith-german").textContent = h.de;
+  document.getElementById("hadith-source").textContent = "المصدر: " + h.source;
+  document.getElementById("hadith-number").textContent = "الحديث رقم " + (index + 1);
+})();
 </script>
+
 
 <!-- بطاقة الترحيب بمركز الإمام مالك -->
 <div style="max-width:650px; margin:25px auto; padding:22px 16px; text-align:center; background:linear-gradient(145deg,#FFFDF7,#F1EBDD); border:3px solid #315640; border-radius:22px; box-shadow:0 5px 16px #00000018;">
