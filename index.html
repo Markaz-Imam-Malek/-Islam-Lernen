@@ -252,7 +252,10 @@ button {
   </div>
 </div>
 
+
 <script>
+let markazCompassHandler = null;
+
 function openMarkazLive(type) {
   const windowBox = document.getElementById("markaz-live-window");
   const title = document.getElementById("markaz-live-title");
@@ -262,10 +265,43 @@ function openMarkazLive(type) {
 
   if (type === "qibla") {
     title.textContent = "🧭 اتجاه القبلة | Qibla";
-    content.innerHTML =
-      '<iframe src="https://qiblafinder.withgoogle.com/" ' +
-      'style="width:100%;height:65vh;border:0;border-radius:10px;" ' +
-      'allow="geolocation" loading="lazy"></iframe>';
+
+    content.innerHTML = `
+      <div style="text-align:center;color:#315640;padding:15px;">
+        <p>ضع الهاتف بشكل أفقي واسمح بالوصول إلى موقعك.</p>
+
+        <div id="markaz-qibla-degree"
+          style="font-size:19px;font-weight:bold;margin:15px;">
+          جارٍ تحديد اتجاه القبلة...
+        </div>
+
+        <div style="width:210px;height:210px;margin:20px auto;
+          border:5px solid #C6A66B;border-radius:50%;
+          background:#FFFDF7;display:flex;align-items:center;
+          justify-content:center;position:relative;">
+
+          <span style="position:absolute;top:8px;font-weight:bold;">N</span>
+
+          <div id="markaz-qibla-arrow"
+            style="font-size:90px;color:#315640;
+            transform:rotate(0deg);">
+            ↑
+          </div>
+        </div>
+
+        <p id="markaz-qibla-status" style="font-size:14px;">
+          نطلب إذن تحديد الموقع...
+        </p>
+
+        <button type="button" onclick="startMarkazCompass()"
+          style="background:#315640;color:white;border:0;
+          border-radius:10px;padding:12px 18px;font-size:16px;">
+          تشغيل البوصلة
+        </button>
+      </div>
+    `;
+
+    startMarkazCompass();
   }
 
   if (type === "madinah") {
@@ -287,11 +323,109 @@ function openMarkazLive(type) {
   }
 }
 
+function startMarkazCompass() {
+  const status = document.getElementById("markaz-qibla-status");
+  const degreeText = document.getElementById("markaz-qibla-degree");
+  const arrow = document.getElementById("markaz-qibla-arrow");
+
+  if (!status || !degreeText || !arrow) return;
+
+  if (!navigator.geolocation) {
+    status.textContent = "المتصفح لا يدعم تحديد الموقع.";
+    return;
+  }
+
+  status.textContent = "جارٍ تحديد موقعك...";
+
+  navigator.geolocation.getCurrentPosition(
+    function(position) {
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+
+      const kaabaLat = 21.4225 * Math.PI / 180;
+      const kaabaLon = 39.8262 * Math.PI / 180;
+      const userLat = lat * Math.PI / 180;
+      const userLon = lon * Math.PI / 180;
+
+      const deltaLon = kaabaLon - userLon;
+
+      const y = Math.sin(deltaLon) * Math.cos(kaabaLat);
+      const x = Math.cos(userLat) * Math.sin(kaabaLat) -
+        Math.sin(userLat) * Math.cos(kaabaLat) * Math.cos(deltaLon);
+
+      const bearing = (Math.atan2(y, x) * 180 / Math.PI + 360) % 360;
+
+      degreeText.textContent =
+        "اتجاه القبلة: " + bearing.toFixed(1) + "°";
+
+      arrow.style.transform = "rotate(" + bearing + "deg)";
+      status.textContent =
+        "تم تحديد الاتجاه. الشمال هو أعلى الدائرة.";
+
+      markazCompassHandler = function(event) {
+        let heading = null;
+
+        if (typeof event.webkitCompassHeading === "number") {
+          heading = event.webkitCompassHeading;
+        } else if (typeof event.alpha === "number") {
+          heading = 360 - event.alpha;
+        }
+
+        if (heading !== null) {
+          arrow.style.transform =
+            "rotate(" + (bearing - heading) + "deg)";
+          status.textContent = "البوصلة تعمل. وجّه السهم نحو القبلة.";
+        }
+      };
+
+      if (window.DeviceOrientationEvent) {
+        if (typeof DeviceOrientationEvent.requestPermission === "function") {
+          DeviceOrientationEvent.requestPermission()
+            .then(function(permission) {
+              if (permission === "granted") {
+                window.addEventListener(
+                  "deviceorientation",
+                  markazCompassHandler
+                );
+              } else {
+                status.textContent =
+                  "تم حساب الاتجاه، لكن إذن البوصلة لم يُمنح.";
+              }
+            })
+            .catch(function() {
+              status.textContent =
+                "تم حساب الاتجاه. تعذر تشغيل حساس البوصلة.";
+            });
+        } else {
+          window.addEventListener(
+            "deviceorientation",
+            markazCompassHandler
+          );
+        }
+      }
+    },
+    function() {
+      status.textContent =
+        "تعذر تحديد الموقع. اسمح للموقع بالوصول إلى موقعك.";
+    },
+    { enableHighAccuracy: true, timeout: 15000 }
+  );
+}
+
 function closeMarkazLive() {
+  if (markazCompassHandler) {
+    window.removeEventListener(
+      "deviceorientation",
+      markazCompassHandler
+    );
+    markazCompassHandler = null;
+  }
+
   document.getElementById("markaz-live-window").style.display = "none";
   document.getElementById("markaz-live-content").innerHTML = "";
 }
 </script>
+
 
 
 
