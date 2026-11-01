@@ -253,13 +253,17 @@ button {
 </div>
 
 
+
 <script>
 let markazCompassHandler = null;
+let markazQiblaBearing = null;
 
 function openMarkazLive(type) {
   const windowBox = document.getElementById("markaz-live-window");
   const title = document.getElementById("markaz-live-title");
   const content = document.getElementById("markaz-live-content");
+
+  if (!windowBox || !title || !content) return;
 
   windowBox.style.display = "block";
 
@@ -268,11 +272,12 @@ function openMarkazLive(type) {
 
     content.innerHTML = `
       <div style="text-align:center;color:#315640;padding:15px;">
-        <p>ضع الهاتف بشكل أفقي واسمح بالوصول إلى موقعك.</p>
+
+        <p>اسمح بالوصول إلى موقعك لتحديد اتجاه القبلة.</p>
 
         <div id="markaz-qibla-degree"
           style="font-size:19px;font-weight:bold;margin:15px;">
-          جارٍ تحديد اتجاه القبلة...
+          في انتظار تحديد الموقع...
         </div>
 
         <div style="width:210px;height:210px;margin:20px auto;
@@ -290,18 +295,17 @@ function openMarkazLive(type) {
         </div>
 
         <p id="markaz-qibla-status" style="font-size:14px;">
-          نطلب إذن تحديد الموقع...
+          اضغط على تشغيل البوصلة.
         </p>
 
         <button type="button" onclick="startMarkazCompass()"
           style="background:#315640;color:white;border:0;
           border-radius:10px;padding:12px 18px;font-size:16px;">
-          تشغيل البوصلة
+          🧭 تشغيل البوصلة
         </button>
+
       </div>
     `;
-
-    startMarkazCompass();
   }
 
   if (type === "madinah") {
@@ -330,101 +334,163 @@ function startMarkazCompass() {
 
   if (!status || !degreeText || !arrow) return;
 
-  if (!navigator.geolocation) {
-    status.textContent = "المتصفح لا يدعم تحديد الموقع.";
-    return;
+  if (markazCompassHandler) {
+    window.removeEventListener("deviceorientation", markazCompassHandler);
+    window.removeEventListener("deviceorientationabsolute", markazCompassHandler);
+    markazCompassHandler = null;
   }
 
-  status.textContent = "جارٍ تحديد موقعك...";
+  // طلب إذن البوصلة مباشرة من ضغطة المستخدم
+  let permissionPromise = Promise.resolve("granted");
 
-  navigator.geolocation.getCurrentPosition(
-    function(position) {
-      const lat = position.coords.latitude;
-      const lon = position.coords.longitude;
+  if (
+    window.DeviceOrientationEvent &&
+    typeof DeviceOrientationEvent.requestPermission === "function"
+  ) {
+    try {
+      permissionPromise = DeviceOrientationEvent.requestPermission();
+    } catch (error) {
+      status.textContent = "تعذر طلب إذن البوصلة.";
+      return;
+    }
+  }
 
-      const kaabaLat = 21.4225 * Math.PI / 180;
-      const kaabaLon = 39.8262 * Math.PI / 180;
-      const userLat = lat * Math.PI / 180;
-      const userLon = lon * Math.PI / 180;
+  permissionPromise.then(function(permission) {
 
-      const deltaLon = kaabaLon - userLon;
+    if (permission !== "granted") {
+      status.textContent = "يرجى السماح بالوصول إلى البوصلة.";
+      return;
+    }
 
-      const y = Math.sin(deltaLon) * Math.cos(kaabaLat);
-      const x = Math.cos(userLat) * Math.sin(kaabaLat) -
-        Math.sin(userLat) * Math.cos(kaabaLat) * Math.cos(deltaLon);
+    if (!navigator.geolocation) {
+      status.textContent = "المتصفح لا يدعم تحديد الموقع.";
+      return;
+    }
 
-      const bearing = (Math.atan2(y, x) * 180 / Math.PI + 360) % 360;
+    status.textContent = "جارٍ تحديد موقعك...";
 
-      degreeText.textContent =
-        "اتجاه القبلة: " + bearing.toFixed(1) + "°";
+    navigator.geolocation.getCurrentPosition(
+      function(position) {
 
-      arrow.style.transform = "rotate(" + bearing + "deg)";
-      status.textContent =
-        "تم تحديد الاتجاه. الشمال هو أعلى الدائرة.";
+        const lat = position.coords.latitude * Math.PI / 180;
+        const lon = position.coords.longitude * Math.PI / 180;
 
-      markazCompassHandler = function(event) {
-        let heading = null;
+        const kaabaLat = 21.4225 * Math.PI / 180;
+        const kaabaLon = 39.8262 * Math.PI / 180;
 
-        if (typeof event.webkitCompassHeading === "number") {
-          heading = event.webkitCompassHeading;
-        } else if (typeof event.alpha === "number") {
-          heading = 360 - event.alpha;
-        }
+        const deltaLon = kaabaLon - lon;
 
-        if (heading !== null) {
-          arrow.style.transform =
-            "rotate(" + (bearing - heading) + "deg)";
-          status.textContent = "البوصلة تعمل. وجّه السهم نحو القبلة.";
-        }
-      };
+        const y = Math.sin(deltaLon) * Math.cos(kaabaLat);
 
-      if (window.DeviceOrientationEvent) {
-        if (typeof DeviceOrientationEvent.requestPermission === "function") {
-          DeviceOrientationEvent.requestPermission()
-            .then(function(permission) {
-              if (permission === "granted") {
-                window.addEventListener(
-                  "deviceorientation",
-                  markazCompassHandler
-                );
-              } else {
-                status.textContent =
-                  "تم حساب الاتجاه، لكن إذن البوصلة لم يُمنح.";
-              }
-            })
-            .catch(function() {
-              status.textContent =
-                "تم حساب الاتجاه. تعذر تشغيل حساس البوصلة.";
-            });
-        } else {
+        const x =
+          Math.cos(lat) * Math.sin(kaabaLat) -
+          Math.sin(lat) * Math.cos(kaabaLat) * Math.cos(deltaLon);
+
+        const bearing =
+          (Math.atan2(y, x) * 180 / Math.PI + 360) % 360;
+
+        markazQiblaBearing = bearing;
+
+        degreeText.textContent =
+          "اتجاه القبلة: " + bearing.toFixed(1) + "°";
+
+        // الاتجاه بالنسبة للشمال
+        arrow.style.transform = "rotate(" + bearing + "deg)";
+
+        status.textContent =
+          "تم تحديد القبلة. جارٍ تشغيل البوصلة...";
+
+        markazCompassHandler = function(event) {
+
+          let heading = null;
+
+          // بوصلة أجهزة iPhone
+          if (typeof event.webkitCompassHeading === "number") {
+            heading = event.webkitCompassHeading;
+          }
+
+          // أجهزة أخرى
+          else if (typeof event.alpha === "number") {
+            heading = (360 - event.alpha) % 360;
+          }
+
+          if (heading !== null) {
+            const direction = (bearing - heading + 360) % 360;
+
+            arrow.style.transform =
+              "rotate(" + direction + "deg)";
+
+            status.textContent =
+              "البوصلة تعمل. وجّه السهم نحو القبلة.";
+          }
+        };
+
+        if (window.DeviceOrientationEvent) {
           window.addEventListener(
             "deviceorientation",
             markazCompassHandler
           );
+
+          window.addEventListener(
+            "deviceorientationabsolute",
+            markazCompassHandler
+          );
+        } else {
+          status.textContent =
+            "تم حساب اتجاه القبلة، لكن جهازك لا يدعم البوصلة.";
         }
+
+      },
+
+      function(error) {
+        if (error.code === 1) {
+          status.textContent =
+            "رفضت إذن الموقع. اسمح للموقع بالوصول إلى موقعك.";
+        } else if (error.code === 3) {
+          status.textContent =
+            "انتهت مهلة تحديد الموقع. حاول مرة أخرى.";
+        } else {
+          status.textContent =
+            "تعذر تحديد موقعك. حاول مرة أخرى.";
+        }
+      },
+
+      {
+        enableHighAccuracy: true,
+        timeout: 20000,
+        maximumAge: 0
       }
-    },
-    function() {
-      status.textContent =
-        "تعذر تحديد الموقع. اسمح للموقع بالوصول إلى موقعك.";
-    },
-    { enableHighAccuracy: true, timeout: 15000 }
-  );
+    );
+
+  }).catch(function() {
+    status.textContent =
+      "تعذر تشغيل البوصلة. تحقق من إعدادات iPhone.";
+  });
 }
 
 function closeMarkazLive() {
+
   if (markazCompassHandler) {
     window.removeEventListener(
       "deviceorientation",
       markazCompassHandler
     );
+
+    window.removeEventListener(
+      "deviceorientationabsolute",
+      markazCompassHandler
+    );
+
     markazCompassHandler = null;
   }
+
+  markazQiblaBearing = null;
 
   document.getElementById("markaz-live-window").style.display = "none";
   document.getElementById("markaz-live-content").innerHTML = "";
 }
 </script>
+
 
 
 
