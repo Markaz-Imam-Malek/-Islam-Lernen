@@ -1,0 +1,370 @@
+/* ==================================
+   MARKAZ IMAM MALIK PREMIUM V2
+================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap');
+
+:root{
+
+--gold:#e2c078;
+--gold-light:#f3d38c;
+
+--sky1:#050d18;
+--sky2:#102544;
+--sky3:#183b66;
+
+--glass:rgba(255,255,255,.08);
+
+--glass-border:rgba(255,255,255,.15);
+
+--white:#ffffff;
+
+}
+
+/* ==================================
+   BODY
+================================== */
+
+body{
+
+font-family:'Cairo',sans-serif !important;
+
+background:
+linear-gradient(
+180deg,
+var(--sky1) 0%,
+var(--sky2) 45%,
+var(--sky3) 75%,
+var(--sky1) 100%
+) !important;
+
+color:white !important;
+
+min-height:100vh;
+
+}
+
+/* ==================================
+   SCROLLBAR
+================================== */
+
+::-webkit-scrollbar{
+width:10px;
+}
+
+::-webkit-scrollbar-thumb{
+background:var(--gold);
+border-radius:20px;
+}
+
+/* ==================================
+   CARDS
+================================== */
+
+.card,
+.mw-card,
+#markaz-prayer-card{
+
+background:
+rgba(255,255,255,.08) !important;
+
+backdrop-filter:
+blur(14px);
+
+border:
+1px solid var(--glass-border) !important;
+
+box-shadow:
+0 10px 30px rgba(0,0,0,.25);
+
+color:white !important;
+
+}
+
+/* ==================================
+   TEXT COLORS
+================================== */
+
+h1,
+h2,
+h3,
+h4,
+strong{
+
+color:var(--gold) !important;
+
+}
+
+p,
+span,
+div,
+summary{
+
+color:white;
+
+}
+
+small{
+
+color:#d8d8d8;
+
+}
+
+/* ==================================
+   DETAILS
+================================== */
+
+details{
+
+background:
+rgba(255,255,255,.06) !important;
+
+border-radius:15px;
+
+overflow:hidden;
+
+}
+
+details summary{
+
+padding:12px;
+
+cursor:pointer;
+
+transition:.25s;
+
+}
+
+details summary:hover{
+
+background:
+rgba(255,255,255,.08);
+
+}
+
+/* ==================================
+   BUTTONS
+================================== */
+
+button{
+
+background:
+linear-gradient(
+135deg,
+#d7b671,
+#b88d2f
+) !important;
+
+color:#111 !important;
+
+font-weight:700;
+
+border:none;
+
+transition:.25s;
+
+}
+
+button:hover{
+
+transform:
+translateY(-2px);
+
+box-shadow:
+0 8px 25px rgba(226,192,120,.35);
+
+}
+
+/* ==================================
+   SHORTCUTS
+================================== */
+
+.markaz-shortcut-circle{
+
+background:
+linear-gradient(
+145deg,
+#e2c078,
+#ae8030
+) !important;
+
+border:
+2px solid white !important;
+
+color:#111 !important;
+
+}
+
+/* ==================================
+   PRAYER TIMES
+================================== */
+
+#markaz-prayer-times > div{
+
+background:
+rgba(255,255,255,.07)
+!important;
+
+border:
+1px solid rgba(255,255,255,.1)
+!important;
+
+}
+
+#markaz-prayer-times strong{
+
+background:
+rgba(255,255,255,.12)
+!important;
+
+color:
+var(--gold)
+!important;
+
+}
+
+/* ==================================
+   TABLES
+================================== */
+
+table{
+
+background:
+rgba(255,255,255,.05);
+
+border-radius:15px;
+
+overflow:hidden;
+
+}
+
+th{
+
+background:
+rgba(226,192,120,.35)
+!important;
+
+color:white !important;
+
+}
+
+td{
+
+color:white !important;
+
+}
+
+/* ==================================
+   QURAN SECTION
+================================== */
+
+#quran-list details{
+
+background:
+rgba(255,255,255,.06)
+!important;
+
+}
+
+#quran-list p{
+
+color:white !important;
+
+}
+
+/* ==================================
+   AUDIO
+================================== */
+
+audio{
+
+width:100%;
+
+margin-top:10px;
+
+filter:
+drop-shadow(
+0 5px 20px rgba(0,0,0,.4)
+);
+
+}
+
+/* ==================================
+   FOOTER
+================================== */
+
+footer{
+
+margin-top:30px;
+
+background:
+rgba(255,255,255,.05);
+
+border-top:
+1px solid rgba(255,255,255,.1);
+
+}
+
+/* ==================================
+   HERO EFFECT
+================================== */
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:
+radial-gradient(
+circle at top,
+rgba(243,211,140,.18),
+transparent 35%
+);
+
+pointer-events:none;
+
+z-index:-1;
+
+}
+
+/* ==================================
+   GOLD GLOW
+================================== */
+
+.glow{
+
+text-shadow:
+0 0 10px rgba(243,211,140,.7),
+0 0 25px rgba(243,211,140,.4);
+
+}
+
+/* ==================================
+   MOBILE
+================================== */
+
+@media(max-width:768px){
+
+h1{
+font-size:26px;
+}
+
+h2{
+font-size:22px;
+}
+
+#markaz-prayer-times{
+
+grid-template-columns:
+repeat(2,1fr);
+
+}
+
+}
