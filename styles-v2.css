@@ -478,3 +478,98 @@ select {
   color: #f3d38c !important;
 }
 
+/* ISLAMISCHER KALENDER – PREMIUM V3 */
+
+.markaz-calendar-section {
+  margin: 20px 12px;
+  border: 2px solid #e2c078 !important;
+  border-radius: 20px !important;
+  background: linear-gradient(
+    145deg, #173b56, #267c9c
+  ) !important;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,.2);
+}
+
+.markaz-calendar-section > summary {
+  padding: 20px 16px !important;
+  text-align: center;
+  font-size: 19px;
+  font-weight: 800;
+  color: #fff !important;
+  cursor: pointer;
+}
+
+.markaz-calendar-content {
+  padding: 12px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 12px;
+}
+
+.markaz-calendar-today {
+  grid-column: 1 / -1;
+  text-align: center;
+  background: #102b43;
+  border: 2px solid #e2c078;
+  border-radius: 16px;
+  padding: 20px 12px;
+}
+
+.markaz-calendar-today h3 {
+  color: #f3d38c !important;
+  margin: 0 0 8px;
+}
+
+.markaz-calendar-today strong {
+  color: #fff !important;
+  font-size: 21px;
+}
+
+.markaz-calendar-card {
+  background: linear-gradient(
+    145deg, #205574, #14354f
+  ) !important;
+  border: 1.5px solid #e2c078 !important;
+  border-radius: 16px;
+  padding: 16px 10px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,.15);
+}
+
+.markaz-calendar-card h4 {
+  color: #f3d38c !important;
+  font-size: 16px;
+  margin: 0 0 12px;
+}
+
+.markaz-calendar-date {
+  color: #fff !important;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.markaz-calendar-days {
+  color: #fff !important;
+  background: rgba(255,255,255,.12);
+  border-radius: 20px;
+  padding: 8px 5px;
+  margin-top: 12px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.markaz-calendar-note {
+  grid-column: 1 / -1;
+  color: #e5e9ee !important;
+  font-size: 12px;
+  text-align: center;
+  line-height: 1.7;
+}
+
+@media (max-width: 500px) {
+  .markaz-calendar-content {
+    grid-template-columns: 1fr;
+  }
+}
+
