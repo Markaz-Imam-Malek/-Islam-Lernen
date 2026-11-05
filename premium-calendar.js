@@ -1,234 +1,187 @@
-/* ===========================================
-   MARKAZ IMAM MALIK
-   ISLAMIC CALENDAR V2
-=========================================== */
 
-(function(){
+/* MARKAZ IMAM MALIK – ISLAMISCHER KALENDER V3 */
+(() => {
+  "use strict";
 
-const container = document.createElement("section");
+  const old = document.querySelector(".markaz-dashboard");
+  if (old) old.remove();
 
-container.className = "markaz-dashboard";
+  const section = document.createElement("details");
+  section.className = "markaz-calendar-section";
 
-container.innerHTML = `
+  const summary = document.createElement("summary");
+  summary.textContent = "🌙 التقويم الإسلامي · Islamischer Kalender";
 
-<div class="markaz-widget">
-  <h3>📅 Heute</h3>
-  <strong id="todayIslamicDate">...</strong>
-</div>
+  const content = document.createElement("div");
+  content.className = "markaz-calendar-content";
 
-<div class="markaz-widget">
-  <h3>🌙 Ramadan</h3>
-  <strong id="ramadanInfo">...</strong>
-</div>
+  section.append(summary, content);
 
-<div class="markaz-widget">
-  <h3>🎉 Eid al-Fitr</h3>
-  <strong id="fitrInfo">...</strong>
-</div>
+  const prayerCard = document.querySelector("#markaz-prayer-card");
 
-<div class="markaz-widget">
-  <h3>🕋 Eid al-Adha</h3>
-  <strong id="adhaInfo">...</strong>
-</div>
+  if (prayerCard) {
+    prayerCard.before(section);
+  } else {
+    document.body.prepend(section);
+  }
 
-<div class="markaz-widget">
-  <h3>🌹 Mawlid</h3>
-  <strong id="mawlidInfo">...</strong>
-</div>
-
-<div class="markaz-widget">
-  <h3>📖 1 Muharram</h3>
-  <strong id="muharramInfo">...</strong>
-</div>
-
-<div class="markaz-widget">
-  <h3>⭐ Ashura</h3>
-  <strong id="ashuraInfo">...</strong>
-</div>
-
-<div class="markaz-widget">
-  <h3>🕋 Hajj Saison</h3>
-  <strong id="hajjInfo">...</strong>
-</div>
-
-`;
-
-const prayerCard =
-document.querySelector("#markaz-prayer-card");
-
-if(prayerCard){
-  prayerCard.parentNode.insertBefore(
-    container,
-    prayerCard
+  const hijriFormatter = new Intl.DateTimeFormat(
+    "ar-SA-u-ca-islamic-umalqura",
+    { day: "numeric", month: "long", year: "numeric" }
   );
-}else{
-  document.body.prepend(container);
-}
 
-/* ---------- Islamisches Datum ---------- */
+  const germanDate = new Intl.DateTimeFormat(
+    "de-DE",
+    { day: "2-digit", month: "long", year: "numeric" }
+  );
 
-const islamic =
-new Intl.DateTimeFormat(
-'de-TN-u-ca-islamic',
-{
- day:'numeric',
- month:'long',
- year:'numeric'
-}
-);
+  const events = [
+    { name: "🌙 رمضان · Ramadan", month: 9, day: 1 },
+    { name: "🎉 عيد الفطر · Eid al-Fitr", month: 10, day: 1 },
+    { name: "🕋 بداية الحج · Beginn des Hajj", month: 12, day: 8 },
+    { name: "🏔️ يوم عرفة · Tag von Arafah", month: 12, day: 9 },
+    { name: "🕋 عيد الأضحى · Eid al-Adha", month: 12, day: 10 },
+    { name: "📖 رأس السنة الهجرية · Islamisches Neujahr", month: 1, day: 1 },
+    { name: "⭐ عاشوراء · Ashura", month: 1, day: 10 },
+    { name: "🌹 المولد النبوي · Mawlid", month: 3, day: 12 }
+  ];
 
-document
-.getElementById("todayIslamicDate")
-.textContent=
-islamic.format(new Date());
+  function hijriParts(date) {
+    const parts = new Intl.DateTimeFormat(
+      "en-u-ca-islamic-umalqura",
+      { year: "numeric", month: "numeric", day: "numeric" }
+    ).formatToParts(date);
 
-/* ---------- Hilfsfunktion ---------- */
+    const get = type => Number(
+      parts.find(p => p.type === type)?.value
+    );
 
-function countdown(target){
+    return {
+      year: get("year"),
+      month: get("month"),
+      day: get("day")
+    };
+  }
 
-const now = new Date();
+  function dateAtNoon(date) {
+    return new Date(
+      date.getFullYear(),
+      date.getMonth(),
+      date.getDate(),
+      12
+    );
+  }
 
-const diff =
-target.getTime() -
-now.getTime();
+  function findNextDate(month, day) {
+    const today = dateAtNoon(new Date());
 
-if(diff <= 0){
+    // Search the next 400 Gregorian days.
+    for (let i = 0; i <= 400; i++) {
+      const candidate = new Date(
+        today.getFullYear(),
+        today.getMonth(),
+        today.getDate() + i,
+        12
+      );
 
-return "Läuft";
+      const hijri = hijriParts(candidate);
 
-}
+      if (hijri.month === month && hijri.day === day) {
+        return candidate;
+      }
+    }
 
-const days =
-Math.floor(
-diff /
-(1000*60*60*24)
-);
+    return null;
+  }
 
-return days + " Tage";
+  function remainingDays(target) {
+    const now = new Date();
+    const todayUTC = Date.UTC(
+      now.getFullYear(),
+      now.getMonth(),
+      now.getDate()
+    );
 
-}
+    const targetUTC = Date.UTC(
+      target.getFullYear(),
+      target.getMonth(),
+      target.getDate()
+    );
 
-/* ==================================
-   DATEN 2027
-================================== */
+    return Math.round(
+      (targetUTC - todayUTC) / 86400000
+    );
+  }
 
-/*
-Diese Daten später jährlich anpassen.
-*/
+  function createCard(name, date) {
+    const card = document.createElement("div");
+    card.className = "markaz-calendar-card";
 
-const ramadan =
-new Date("2027-02-08");
+    const heading = document.createElement("h4");
+    heading.textContent = name;
 
-const fitr =
-new Date("2027-03-10");
+    const dateLine = document.createElement("div");
+    dateLine.className = "markaz-calendar-date";
 
-const adha =
-new Date("2027-05-17");
+    const daysLine = document.createElement("div");
+    daysLine.className = "markaz-calendar-days";
 
-const mawlid =
-new Date("2027-09-14");
+    if (date) {
+      const days = remainingDays(date);
 
-const muharram =
-new Date("2027-06-07");
+      dateLine.textContent =
+        "📅 " + germanDate.format(date);
 
-const ashura =
-new Date("2027-06-16");
+      daysLine.textContent = days === 0
+        ? "اليوم · Heute"
+        : `باقي ${days} يوم · Noch ${days} Tage`;
+    } else {
+      dateLine.textContent = "Datum nicht verfügbar";
+    }
 
-const arafah =
-new Date("2027-05-16");
+    card.append(heading, dateLine, daysLine);
+    return card;
+  }
 
-const hajj =
-new Date("2027-05-13");
+  function render() {
+    content.replaceChildren();
 
-/* ---------- RAMADAN ---------- */
+    const todayCard = document.createElement("div");
+    todayCard.className = "markaz-calendar-today";
 
-document
-.getElementById("ramadanInfo")
-.textContent =
-countdown(ramadan);
+    const todayTitle = document.createElement("h3");
+    todayTitle.textContent = "📅 التاريخ الهجري اليوم";
 
-/* ---------- FITR ---------- */
+    const todayDate = document.createElement("strong");
+    todayDate.textContent = hijriFormatter.format(new Date());
 
-document
-.getElementById("fitrInfo")
-.textContent =
-countdown(fitr);
+    todayCard.append(todayTitle, todayDate);
+    content.appendChild(todayCard);
 
-/* ---------- ADHA ---------- */
+    const upcoming = events.map(event => ({
+      ...event,
+      date: findNextDate(event.month, event.day)
+    }));
 
-document
-.getElementById("adhaInfo")
-.textContent =
-countdown(adha);
+    upcoming.sort((a, b) =>
+      (a.date?.getTime() ?? Infinity) -
+      (b.date?.getTime() ?? Infinity)
+    );
 
-/* ---------- MAWLID ---------- */
+    upcoming.forEach(event => {
+      content.appendChild(
+        createCard(event.name, event.date)
+      );
+    });
 
-document
-.getElementById("mawlidInfo")
-.textContent =
-countdown(mawlid);
+    const note = document.createElement("p");
+    note.className = "markaz-calendar-note";
+    note.textContent =
+      "Hinweis: Die Daten basieren auf dem Umm-al-Qura-Kalender. " +
+      "Religiöse Termine können je nach Mondsichtung um einen Tag abweichen.";
 
-/* ---------- MUHARRAM ---------- */
+    content.appendChild(note);
+  }
 
-document
-.getElementById("muharramInfo")
-.textContent =
-countdown(muharram);
-
-/* ---------- ASHURA ---------- */
-
-document
-.getElementById("ashuraInfo")
-.textContent =
-countdown(ashura);
-
-/* ---------- HAJJ ---------- */
-
-document
-.getElementById("hajjInfo")
-.textContent =
-countdown(hajj);
-
-/* ==================================
-   FREITAG ERKENNEN
-================================== */
-
-const friday =
-document.createElement("div");
-
-friday.className =
-"markaz-widget";
-
-if(new Date().getDay() === 5){
-
-friday.innerHTML = `
-<h3>🌙 Freitag</h3>
-<strong>
-Sure Al-Kahf lesen
-</strong>
-`;
-
-container.appendChild(friday);
-
-}
-
-/* ==================================
-   ARAFAH INFO
-================================== */
-
-const arafahCard =
-document.createElement("div");
-
-arafahCard.className =
-"markaz-widget";
-
-arafahCard.innerHTML = `
-<h3>🏔️ Tag von Arafah</h3>
-<strong>
-${countdown(arafah)}
-</strong>
-`;
-
-container.appendChild(arafahCard);
-
+  render();
 })();
