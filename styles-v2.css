@@ -368,3 +368,113 @@ repeat(2,1fr);
 }
 
 }
+
+/* ==================================
+   MARKAZ IMAM MALIK
+   PREMIUM V2 – COLOR FIX
+================================== */
+
+:root {
+  --sky1: #071827;
+  --sky2: #123653;
+  --sky3: #207b9e;
+  --gold: #e2c078;
+}
+
+/* خلفية سماوية مع الأزرق الليلي */
+body {
+  background: linear-gradient(
+    160deg,
+    #071827 0%,
+    #123653 45%,
+    #207b9e 100%
+  ) fixed !important;
+  color: #ffffff !important;
+}
+
+/* بطاقات داكنة لامعة */
+.card,
+.mw-card,
+details,
+#quran-list details {
+  background: linear-gradient(
+    145deg,
+    #14283d,
+    #233e55
+  ) !important;
+
+  border: 1px solid rgba(226,192,120,.65) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,.22);
+}
+
+/* نصوص واضحة داخل البطاقات */
+.card,
+.card *,
+.mw-card,
+.mw-card *,
+details,
+details *,
+#quran-list,
+#quran-list * {
+  color: #ffffff !important;
+}
+
+/* عناوين ذهبية */
+h1,
+h2,
+h3,
+h4 {
+  color: #f3d38c !important;
+}
+
+/* عناوين السور */
+details > summary,
+details > summary *,
+#quran-list summary,
+#quran-list summary * {
+  color: #ffffff !important;
+  font-weight: 800 !important;
+}
+
+/* أزرار ذهبية */
+button,
+.markaz-shortcut-circle {
+  background: linear-gradient(
+    135deg,
+    #f3d38c,
+    #c49b4e
+  ) !important;
+  color: #101c29 !important;
+}
+
+/* نصوص الأزرار */
+button *,
+.markaz-shortcut-circle * {
+  color: inherit !important;
+}
+
+/* حقول الإدخال */
+input,
+textarea,
+select {
+  background: #ffffff !important;
+  color: #17283b !important;
+  border: 1px solid #d6bd83 !important;
+}
+
+/* مواقيت الصلاة */
+#markaz-prayer-times > div {
+  background: #142e47 !important;
+  color: #ffffff !important;
+  border: 1px solid #d6bd83 !important;
+}
+
+#markaz-prayer-times > div * {
+  color: #ffffff !important;
+}
+
+#markaz-prayer-times strong {
+  color: #f3d38c !important;
+}
+
