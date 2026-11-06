@@ -572,4 +572,21 @@ select {
     grid-template-columns: 1fr;
   }
 }
+/* ==================================
+   HADITH DES TAGES – TEXT FIX
+================================== */
 
+/* النصوص داخل المربعات الفاتحة */
+.markaz-hadith-card [style*="background"] {
+  color: #173b56 !important;
+}
+
+/* النص العربي */
+.markaz-hadith-card [lang="ar"] {
+  color: #173b56 !important;
+}
+
+/* المصدر ورقم الحديث */
+.markaz-hadith-card small {
+  color: #173b56 !important;
+}
