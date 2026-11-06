@@ -11,7 +11,8 @@
 
   const summary = document.createElement("summary");
   summary.textContent = "🌙 التقويم الإسلامي · Islamischer Kalender";
-
+summary.style.setProperty("color", "#FFFFFF", "important");
+summary.style.setProperty("-webkit-text-fill-color", "#FFFFFF", "important");
   const content = document.createElement("div");
   content.className = "markaz-calendar-content";
 
