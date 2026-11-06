@@ -10,13 +10,18 @@
   section.className = "markaz-calendar-section";
 
   const summary = document.createElement("summary");
-  summary.textContent = "🌙 التقويم الإسلامي · Islamischer Kalender";
-summary.style.setProperty("color", "#FFFFFF", "important");
-summary.style.setProperty("-webkit-text-fill-color", "#FFFFFF", "important");
-  const content = document.createElement("div");
-  content.className = "markaz-calendar-content";
 
-  section.append(summary, content);
+summary.textContent = "🌙 التقويم الإسلامي · Islamischer Kalender";
+
+summary.style.setProperty("color", "#8B6508", "important");
+summary.style.setProperty("-webkit-text-fill-color", "#8B6508", "important");
+summary.style.setProperty("font-weight", "800", "important");
+summary.style.setProperty("font-size", "22px", "important");
+
+const content = document.createElement("div");
+content.className = "markaz-calendar-content";
+
+section.append(summary, content);
 
   const prayerCard = document.querySelector("#markaz-prayer-card");
 
