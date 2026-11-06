@@ -281,7 +281,29 @@ section.card * {
 .markaz-widget * {
   color: #315640 !important;
 }
+/* إصلاح ألوان عناوين الأقسام */
 
+section h2,
+section h3,
+.card h2,
+.card h3,
+details summary {
+  color: #315640 !important;
+  -webkit-text-fill-color: #315640 !important;
+  opacity: 1 !important;
+}
+
+/* إصلاح النصوص داخل البطاقات البيضاء */
+.card > p,
+.card > strong {
+  color: #315640 !important;
+}
+
+/* الحفاظ على ظهور العناوين */
+section h2,
+section h3 {
+  text-shadow: none !important;
+}
 </style>
 <link rel="stylesheet" href="styles-v2.css">
   
