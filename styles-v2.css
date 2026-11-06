@@ -635,3 +635,28 @@ body {
   font-size: 20px !important;
   font-weight: 800 !important;
 }
+/* FIX HIJRI CALENDAR - MARKAZ IMAM MALIK */
+
+/* بطاقة التقويم */
+.markaz-dashboard,
+.markaz-dashboard .markaz-widget {
+  color: #244A35 !important;
+}
+
+/* جميع الكتابات داخل التقويم */
+.markaz-dashboard *,
+.markaz-dashboard .markaz-widget * {
+  color: #244A35 !important;
+  -webkit-text-fill-color: #244A35 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* العناوين بالذهبي الداكن */
+.markaz-dashboard h2,
+.markaz-dashboard h3,
+.markaz-dashboard summary {
+  color: #9B7000 !important;
+  -webkit-text-fill-color: #9B7000 !important;
+  font-weight: 800 !important;
+}
