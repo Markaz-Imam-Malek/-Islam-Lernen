@@ -2816,6 +2816,43 @@ quranLessons.forEach((lesson, index) => {
 </script>
 <script src="premium-v2.js"></script>
 <script src="premium-calendar.js"></script>
+
+<!-- MARKAZ IMAM MALIK – NOTIFICATIONS -->
+<div style="text-align:center; margin:20px;">
+  <button type="button" id="markaz-notify-btn"
+    style="padding:14px; border-radius:12px;">
+    🔔 تفعيل إشعارات حديث اليوم
+  </button>
+  <p id="markaz-notify-status"></p>
+</div>
+
+<script>
+document.getElementById("markaz-notify-btn")
+.addEventListener("click", async function () {
+  const status = document.getElementById(
+    "markaz-notify-status"
+  );
+
+  if (!("Notification" in window) ||
+      !("serviceWorker" in navigator)) {
+    status.textContent = "الإشعارات غير مدعومة هنا";
+    return;
+  }
+
+  try {
+    const permission = await Notification.requestPermission();
+
+    if (permission === "granted") {
+      status.textContent = "✅ تم السماح بالإشعارات";
+    } else {
+      status.textContent = "لم يتم السماح بالإشعارات";
+    }
+  } catch (error) {
+    status.textContent = "تعذر تفعيل الإشعارات";
+  }
+});
+</script>
+
 </body>
 
 </html>
