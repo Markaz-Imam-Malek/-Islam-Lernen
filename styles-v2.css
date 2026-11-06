@@ -607,4 +607,31 @@ body {
     #050d18 100%
   ) fixed !important;
 }
+/* MARKAZ IMAM MALIK - HIJRI CALENDAR */
 
+.markaz-dashboard .markaz-widget {
+  background: #102544 !important;
+  border: 2px solid #C6A66B !important;
+}
+
+/* جميع نصوص التقويم بالذهبي */
+.markaz-dashboard .markaz-widget,
+.markaz-dashboard .markaz-widget * {
+  color: #FFD700 !important;
+  -webkit-text-fill-color: #FFD700 !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+}
+
+/* العناوين */
+.markaz-dashboard .markaz-widget h3 {
+  color: #FFD700 !important;
+  font-weight: 800 !important;
+}
+
+/* التواريخ */
+.markaz-dashboard .markaz-widget strong {
+  color: #FFD700 !important;
+  font-size: 20px !important;
+  font-weight: 800 !important;
+}
