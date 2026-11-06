@@ -2860,8 +2860,10 @@ quranLessons.forEach((lesson, index) => {
     "background:#FFFDF8;border:1px solid #E4D8C5;border-radius:12px;padding:12px;margin:12px 0;";
   const summary = document.createElement("summary");
   summary.textContent = lesson.title;
-  summary.style.cssText =
-    "color:#315640;font-size:18px;font-weight:bold;cursor:pointer;";
+  
+summary.style.cssText =
+  "color:#315640 !important;-webkit-text-fill-color:#315640 !important;font-size:18px;font-weight:bold;cursor:pointer;";
+
   const content = document.createElement("div");
   content.style.cssText =
     "padding-top:12px;line-height:2;text-align:right;";
