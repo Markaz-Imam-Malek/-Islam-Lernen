@@ -492,3 +492,51 @@ table thead th * {
   color: #FFFFFF !important;
   -webkit-text-fill-color: #FFFFFF !important;
 }
+
+/* =====================================
+   MARKAZ IMAM MALIK
+   FIX TEXT COLORS ON LIGHT BACKGROUNDS
+===================================== */
+
+/* جميع النصوص داخل البطاقات الفاتحة */
+.markaz-widget,
+.markaz-widget *,
+.markaz-dashboard,
+.markaz-dashboard *,
+#markaz-prayer-card,
+#markaz-prayer-card *,
+#markaz-prayer-times,
+#markaz-prayer-times *,
+#quran-lessons,
+#quran-lessons *,
+.quran-lesson,
+.quran-lesson *,
+details,
+details summary,
+details summary *,
+details[open],
+details[open] * {
+  color: #171717 !important;
+  -webkit-text-fill-color: #171717 !important;
+  text-shadow: none !important;
+}
+
+/* العناوين داخل المربعات */
+.markaz-widget h3,
+.markaz-widget strong,
+details summary {
+  color: #111111 !important;
+  -webkit-text-fill-color: #111111 !important;
+}
+
+/* الحفاظ على الخلفية الليلية */
+body {
+  background: linear-gradient(
+    180deg,
+    #050d18,
+    #102544,
+    #183b66,
+    #050d18
+  ) !important;
+}
+
