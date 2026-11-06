@@ -590,3 +590,65 @@ select {
 .markaz-hadith-card small {
   color: #173b56 !important;
 }
+
+/* MARKAZ IMAM MALIK – COLOR FIX */
+
+:root {
+  --green: #315640;
+  --green-dark: #244936;
+  --gold: #B88A38;
+  --cream: #FFFDF8;
+  --text: #244936;
+}
+
+/* العناوين والنصوص داخل الخلفيات الفاتحة */
+.welcome-card,
+.welcome-card h1,
+.welcome-card h2,
+.welcome-card p {
+  color: #244936 !important;
+}
+
+/* القوائم القابلة للفتح */
+details {
+  background: #FFFDF8 !important;
+  color: #244936 !important;
+  border: 1px solid #C6A66B !important;
+}
+
+details > summary,
+details > summary * {
+  color: #244936 !important;
+}
+
+/* محتويات القوائم */
+details p,
+details label,
+details li {
+  color: #244936 !important;
+}
+
+/* جدول الحزب الراتب: صفوف الخميس */
+tr[style*="background"] {
+  color: #244936;
+}
+
+tr[style*="background"] td,
+tr[style*="background"] td * {
+  color: #244936 !important;
+}
+
+/* النصوص داخل البطاقات الفاتحة */
+.markaz-widget {
+  color: #244936;
+}
+
+/* مواقيت الصلاة */
+#markaz-prayer-card {
+  color: #244936 !important;
+}
+
+#markaz-prayer-card h2,
+#markaz-prayer-card h3 {
+  color: #B88A38 !important;
+}
