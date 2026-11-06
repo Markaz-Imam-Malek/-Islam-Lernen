@@ -1,662 +1,10 @@
-/* ==================================
-   MARKAZ IMAM MALIK PREMIUM V2
-================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap');
-
-:root{
-
---gold:#e2c078;
---gold-light:#f3d38c;
-
---sky1:#050d18;
---sky2:#102544;
---sky3:#183b66;
-
---glass:rgba(255,255,255,.08);
-
---glass-border:rgba(255,255,255,.15);
-
---white:#ffffff;
-
-}
-
-/* ==================================
-   BODY
-================================== */
-
-body{
-
-font-family:'Cairo',sans-serif !important;
-
-background:
-linear-gradient(
-180deg,
-var(--sky1) 0%,
-var(--sky2) 45%,
-var(--sky3) 75%,
-var(--sky1) 100%
-) !important;
-
-color:white !important;
-
-min-height:100vh;
-
-}
-
-/* ==================================
-   SCROLLBAR
-================================== */
-
-::-webkit-scrollbar{
-width:10px;
-}
-
-::-webkit-scrollbar-thumb{
-background:var(--gold);
-border-radius:20px;
-}
-
-/* ==================================
-   CARDS
-================================== */
-
-.card,
-.mw-card,
-#markaz-prayer-card{
-
-background:
-rgba(255,255,255,.08) !important;
-
-backdrop-filter:
-blur(14px);
-
-border:
-1px solid var(--glass-border) !important;
-
-box-shadow:
-0 10px 30px rgba(0,0,0,.25);
-
-color:white !important;
-
-}
-
-/* ==================================
-   TEXT COLORS
-================================== */
-
-h1,
-h2,
-h3,
-h4,
-strong{
-
-color:var(--gold) !important;
-
-}
-
-p,
-span,
-div,
-summary{
-
-color:white;
-
-}
-
-small{
-
-color:#d8d8d8;
-
-}
-
-/* ==================================
-   DETAILS
-================================== */
-
-details{
-
-background:
-rgba(255,255,255,.06) !important;
-
-border-radius:15px;
-
-overflow:hidden;
-
-}
-
-details summary{
-
-padding:12px;
-
-cursor:pointer;
-
-transition:.25s;
-
-}
-
-details summary:hover{
-
-background:
-rgba(255,255,255,.08);
-
-}
-
-/* ==================================
-   BUTTONS
-================================== */
-
-button{
-
-background:
-linear-gradient(
-135deg,
-#d7b671,
-#b88d2f
-) !important;
-
-color:#111 !important;
-
-font-weight:700;
-
-border:none;
-
-transition:.25s;
-
-}
-
-button:hover{
-
-transform:
-translateY(-2px);
-
-box-shadow:
-0 8px 25px rgba(226,192,120,.35);
-
-}
-
-/* ==================================
-   SHORTCUTS
-================================== */
-
-.markaz-shortcut-circle{
-
-background:
-linear-gradient(
-145deg,
-#e2c078,
-#ae8030
-) !important;
-
-border:
-2px solid white !important;
-
-color:#111 !important;
-
-}
-
-/* ==================================
-   PRAYER TIMES
-================================== */
-
-#markaz-prayer-times > div{
-
-background:
-rgba(255,255,255,.07)
-!important;
-
-border:
-1px solid rgba(255,255,255,.1)
-!important;
-
-}
-
-#markaz-prayer-times strong{
-
-background:
-rgba(255,255,255,.12)
-!important;
-
-color:
-var(--gold)
-!important;
-
-}
-
-/* ==================================
-   TABLES
-================================== */
-
-table{
-
-background:
-rgba(255,255,255,.05);
-
-border-radius:15px;
-
-overflow:hidden;
-
-}
-
-th{
-
-background:
-rgba(226,192,120,.35)
-!important;
-
-color:white !important;
-
-}
-
-td{
-
-color:white !important;
-
-}
-
-/* ==================================
-   QURAN SECTION
-================================== */
-
-#quran-list details{
-
-background:
-rgba(255,255,255,.06)
-!important;
-
-}
-
-#quran-list p{
-
-color:white !important;
-
-}
-
-/* ==================================
-   AUDIO
-================================== */
-
-audio{
-
-width:100%;
-
-margin-top:10px;
-
-filter:
-drop-shadow(
-0 5px 20px rgba(0,0,0,.4)
-);
-
-}
-
-/* ==================================
-   FOOTER
-================================== */
-
-footer{
-
-margin-top:30px;
-
-background:
-rgba(255,255,255,.05);
-
-border-top:
-1px solid rgba(255,255,255,.1);
-
-}
-
-/* ==================================
-   HERO EFFECT
-================================== */
-
-body::before{
-
-content:"";
-
-position:fixed;
-
-top:0;
-left:0;
-
-width:100%;
-height:100%;
-
-background:
-radial-gradient(
-circle at top,
-rgba(243,211,140,.18),
-transparent 35%
-);
-
-pointer-events:none;
-
-z-index:-1;
-
-}
-
-/* ==================================
-   GOLD GLOW
-================================== */
-
-.glow{
-
-text-shadow:
-0 0 10px rgba(243,211,140,.7),
-0 0 25px rgba(243,211,140,.4);
-
-}
-
-/* ==================================
-   MOBILE
-================================== */
-
-@media(max-width:768px){
-
-h1{
-font-size:26px;
-}
-
-h2{
-font-size:22px;
-}
-
-#markaz-prayer-times{
-
-grid-template-columns:
-repeat(2,1fr);
-
-}
-
-}
-
-/* ==================================
+/* ==========================================
    MARKAZ IMAM MALIK
-   PREMIUM V2 – COLOR FIX
-================================== */
+   PREMIUM CREAM · GREEN · GOLD
+   ========================================== */
 
-:root {
-  --sky1: #071827;
-  --sky2: #123653;
-  --sky3: #207b9e;
-  --gold: #e2c078;
-}
-
-/* خلفية سماوية مع الأزرق الليلي */
-body {
-  background: linear-gradient(
-    160deg,
-    #071827 0%,
-    #123653 45%,
-    #207b9e 100%
-  ) fixed !important;
-  color: #ffffff !important;
-}
-
-/* بطاقات داكنة لامعة */
-.card,
-.mw-card,
-details,
-#quran-list details {
-  background: linear-gradient(
-    145deg,
-    #14283d,
-    #233e55
-  ) !important;
-
-  border: 1px solid rgba(226,192,120,.65) !important;
-  border-radius: 18px !important;
-  box-shadow: 0 8px 24px rgba(0,0,0,.22);
-}
-
-/* نصوص واضحة داخل البطاقات */
-.card,
-.card *,
-.mw-card,
-.mw-card *,
-details,
-details *,
-#quran-list,
-#quran-list * {
-  color: #ffffff !important;
-}
-
-/* عناوين ذهبية */
-h1,
-h2,
-h3,
-h4 {
-  color: #f3d38c !important;
-}
-
-/* عناوين السور */
-details > summary,
-details > summary *,
-#quran-list summary,
-#quran-list summary * {
-  color: #ffffff !important;
-  font-weight: 800 !important;
-}
-
-/* أزرار ذهبية */
-button,
-.markaz-shortcut-circle {
-  background: linear-gradient(
-    135deg,
-    #f3d38c,
-    #c49b4e
-  ) !important;
-  color: #101c29 !important;
-}
-
-/* نصوص الأزرار */
-button *,
-.markaz-shortcut-circle * {
-  color: inherit !important;
-}
-
-/* حقول الإدخال */
-input,
-textarea,
-select {
-  background: #ffffff !important;
-  color: #17283b !important;
-  border: 1px solid #d6bd83 !important;
-}
-
-/* مواقيت الصلاة */
-#markaz-prayer-times > div {
-  background: #142e47 !important;
-  color: #ffffff !important;
-  border: 1px solid #d6bd83 !important;
-}
-
-#markaz-prayer-times > div * {
-  color: #ffffff !important;
-}
-
-#markaz-prayer-times strong {
-  color: #f3d38c !important;
-}
-
-/* ISLAMISCHER KALENDER – PREMIUM V3 */
-
-.markaz-calendar-section {
-  margin: 20px 12px;
-  border: 2px solid #e2c078 !important;
-  border-radius: 20px !important;
-  background: linear-gradient(
-    145deg, #173b56, #267c9c
-  ) !important;
-  overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0,0,0,.2);
-}
-
-.markaz-calendar-section > summary {
-  padding: 20px 16px !important;
-  text-align: center;
-  font-size: 19px;
-  font-weight: 800;
-  color: #fff !important;
-  cursor: pointer;
-}
-
-.markaz-calendar-content {
-  padding: 12px;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0,1fr));
-  gap: 12px;
-}
-
-.markaz-calendar-today {
-  grid-column: 1 / -1;
-  text-align: center;
-  background: #102b43;
-  border: 2px solid #e2c078;
-  border-radius: 16px;
-  padding: 20px 12px;
-}
-
-.markaz-calendar-today h3 {
-  color: #f3d38c !important;
-  margin: 0 0 8px;
-}
-
-.markaz-calendar-today strong {
-  color: #fff !important;
-  font-size: 21px;
-}
-
-.markaz-calendar-card {
-  background: linear-gradient(
-    145deg, #205574, #14354f
-  ) !important;
-  border: 1.5px solid #e2c078 !important;
-  border-radius: 16px;
-  padding: 16px 10px;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,.15);
-}
-
-.markaz-calendar-card h4 {
-  color: #f3d38c !important;
-  font-size: 16px;
-  margin: 0 0 12px;
-}
-
-.markaz-calendar-date {
-  color: #fff !important;
-  font-size: 14px;
-  font-weight: 700;
-}
-
-.markaz-calendar-days {
-  color: #fff !important;
-  background: rgba(255,255,255,.12);
-  border-radius: 20px;
-  padding: 8px 5px;
-  margin-top: 12px;
-  font-size: 13px;
-  font-weight: 700;
-}
-
-.markaz-calendar-note {
-  grid-column: 1 / -1;
-  color: #e5e9ee !important;
-  font-size: 12px;
-  text-align: center;
-  line-height: 1.7;
-}
-
-@media (max-width: 500px) {
-  .markaz-calendar-content {
-    grid-template-columns: 1fr;
-  }
-}
-/* ==================================
-   HADITH DES TAGES – TEXT FIX
-================================== */
-
-/* النصوص داخل المربعات الفاتحة */
-.markaz-hadith-card [style*="background"] {
-  color: #173b56 !important;
-}
-
-/* النص العربي */
-.markaz-hadith-card [lang="ar"] {
-  color: #173b56 !important;
-}
-
-/* المصدر ورقم الحديث */
-.markaz-hadith-card small {
-  color: #173b56 !important;
-}
-
-/* MARKAZ IMAM MALIK – COLOR FIX */
-
-:root {
-  --green: #315640;
-  --green-dark: #244936;
-  --gold: #B88A38;
-  --cream: #FFFDF8;
-  --text: #244936;
-}
-
-/* العناوين والنصوص داخل الخلفيات الفاتحة */
-.welcome-card,
-.welcome-card h1,
-.welcome-card h2,
-.welcome-card p {
-  color: #244936 !important;
-}
-
-/* القوائم القابلة للفتح */
-details {
-  background: #FFFDF8 !important;
-  color: #244936 !important;
-  border: 1px solid #C6A66B !important;
-}
-
-details > summary,
-details > summary * {
-  color: #244936 !important;
-}
-
-/* محتويات القوائم */
-details p,
-details label,
-details li {
-  color: #244936 !important;
-}
-
-/* جدول الحزب الراتب: صفوف الخميس */
-tr[style*="background"] {
-  color: #244936;
-}
-
-tr[style*="background"] td,
-tr[style*="background"] td * {
-  color: #244936 !important;
-}
-
-/* النصوص داخل البطاقات الفاتحة */
-.markaz-widget {
-  color: #244936;
-}
-
-/* مواقيت الصلاة */
-#markaz-prayer-card {
-  color: #244936 !important;
-}
-
-#markaz-prayer-card h2,
-#markaz-prayer-card h3 {
-  color: #B88A38 !important;
-}
-
-/* =========================================
-   MARKAZ IMAM MALIK
-   ELEGANT CREAM & GOLD DESIGN
-   ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap');
 
 :root {
   --green: #244936;
@@ -666,152 +14,421 @@ tr[style*="background"] td * {
   --cream: #FFFDF8;
   --cream-soft: #F7F2E8;
   --text: #244936;
+  --muted: #52685A;
+  --border: #D9C49A;
+  --white: #FFFFFF;
 }
 
-/* الخلفية العامة */
+/* GENERAL */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: #F7F2E8 !important;
-  color: #244936;
+  font-family: 'Cairo', sans-serif !important;
+  background: linear-gradient(
+    160deg,
+    #F7F2E8,
+    #FFFDF8,
+    #F3EBD9
+  ) fixed !important;
+  color: var(--text) !important;
+  min-height: 100vh;
+  line-height: 1.8;
 }
 
-/* البطاقات الأساسية */
+/* TEXT */
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--green-dark) !important;
+  line-height: 1.5;
+}
+
+p, li, label, small {
+  color: var(--text);
+}
+
+strong, b {
+  color: inherit;
+}
+
+a {
+  color: var(--green-dark);
+}
+
+a:hover {
+  color: var(--gold);
+}
+
+/* CARDS */
+
+.card,
+.mw-card,
 .welcome-card,
 .markaz-widget,
-.markaz-dashboard,
-#markaz-prayer-card {
+#markaz-prayer-card,
+.markaz-calendar-section {
   background: linear-gradient(
     145deg,
     #FFFDF8,
     #F7F2E8
   ) !important;
-  color: #244936 !important;
-  border: 1.5px solid #C6A66B !important;
+  color: var(--text) !important;
+  border: 1.5px solid var(--gold-light) !important;
   border-radius: 22px !important;
-  box-shadow: 0 5px 18px rgba(60,45,20,.08);
+  box-shadow: 0 5px 20px rgba(70,55,25,.09);
 }
 
-/* بطاقة الترحيب */
-.welcome-card h1,
-.welcome-card h2,
-.welcome-card h3 {
-  color: #244936 !important;
-}
+/* READABLE CARD CONTENT */
 
+.card p,
+.card li,
+.card span,
+.card strong,
+.mw-card p,
+.mw-card span,
+.mw-card strong,
 .welcome-card p,
+.welcome-card span,
 .welcome-card strong,
-.welcome-card span {
-  color: #244936 !important;
+.markaz-widget p,
+.markaz-widget span,
+.markaz-widget strong {
+  color: var(--text) !important;
 }
 
-/* الأقسام القابلة للفتح */
+/* WELCOME */
+
+.welcome-card {
+  padding: 24px 18px;
+  text-align: center;
+  border: 2px solid var(--green) !important;
+}
+
+.welcome-card h1,
+.welcome-card h2 {
+  color: var(--green-dark) !important;
+  font-weight: 800;
+}
+
+.welcome-card p {
+  color: var(--text) !important;
+}
+
+/* DETAILS AND ACCORDIONS */
+
 details {
-  background: #FFFDF8 !important;
-  color: #244936 !important;
-  border: 1px solid #C6A66B !important;
+  background: var(--cream) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--gold-light) !important;
   border-radius: 16px !important;
   margin: 12px 0;
-  padding: 14px;
+  padding: 12px;
+  overflow: hidden;
 }
 
-/* عناوين القوائم */
 details > summary {
-  color: #244936 !important;
-  font-weight: 700 !important;
-  line-height: 1.8;
+  color: var(--green-dark) !important;
+  font-weight: 800 !important;
   cursor: pointer;
+  line-height: 1.8;
+  padding: 10px;
 }
 
-details > summary *,
-details > summary strong,
-details > summary span {
-  color: #244936 !important;
+details > summary,
+details > summary * {
+  color: var(--green-dark) !important;
 }
 
-/* النصوص داخل القوائم */
+details[open] > summary {
+  border-bottom: 1px solid var(--gold-light);
+  margin-bottom: 12px;
+}
+
+details details {
+  background: var(--cream-soft) !important;
+}
+
 details p,
 details li,
 details label,
-details strong {
-  color: #244936 !important;
+details strong,
+details span,
+details h3,
+details h4 {
+  color: var(--text) !important;
 }
 
-/* البطاقات داخل القوائم */
-details details {
-  background: #F7F2E8 !important;
-  border: 1px solid #D9C49A !important;
+/* BUTTONS */
+
+button {
+  background: linear-gradient(
+    135deg,
+    #E8D5AA,
+    #C6A66B
+  );
+  color: var(--green-dark);
+  border: 1px solid var(--gold);
+  border-radius: 12px;
+  font-family: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
 }
 
-/* عناوين الأقسام ذات الخلفية الفاتحة */
-.welcome-card h1,
-.markaz-widget h3,
-#markaz-prayer-card h2 {
-  color: #244936 !important;
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(90,65,25,.15);
 }
 
-/* جدول الحزب الراتب */
-table {
-  border-collapse: separate;
-  border-spacing: 0;
-  width: 100%;
-}
+/* SHORTCUT ICONS */
 
-th {
-  background: #315640 !important;
+.markaz-shortcut-circle {
+  background: linear-gradient(
+    145deg,
+    #315640,
+    #244936
+  ) !important;
+  border: 2px solid var(--gold) !important;
   color: #FFFFFF !important;
+  border-radius: 50%;
 }
 
-td {
-  background: #FFFDF8 !important;
-  color: #244936 !important;
-  border-bottom: 1px solid #E4D8C5;
-}
+/* PRAYER TIMES */
 
-td *,
-th * {
-  color: inherit !important;
-}
-
-/* صفوف الخميس المميزة */
-tr[style*="background"] td {
-  background: #FFF2D5 !important;
-  color: #244936 !important;
-}
-
-/* مواقيت الصلاة */
 #markaz-prayer-card {
+  padding: 20px 14px;
   text-align: center;
 }
 
 #markaz-prayer-card h2,
 #markaz-prayer-card h3 {
-  color: #B88A38 !important;
+  color: var(--gold) !important;
 }
 
-/* النصوص داخل بطاقات المواقيت */
 #markaz-prayer-times > div {
-  background: #FFFDF8 !important;
-  color: #244936 !important;
-  border: 1px solid #E8D5AA;
+  background: var(--cream) !important;
+  color: var(--green-dark) !important;
+  border: 1px solid var(--gold-light) !important;
+  border-radius: 14px;
 }
 
+#markaz-prayer-times > div,
 #markaz-prayer-times > div * {
-  color: #244936 !important;
+  color: var(--green-dark) !important;
 }
 
-/* أزرار الاختبارات */
-button {
-  border-radius: 12px;
+#markaz-prayer-times strong {
+  color: var(--green-dark) !important;
+  font-weight: 800;
 }
 
-/* تحسين القراءة على الهاتف */
-@media (max-width: 600px) {
+#markaz-prayer-status {
+  color: var(--muted) !important;
+}
+
+/* TABLES AND HIZB RATIB */
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--cream);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+th {
+  background: var(--green) !important;
+  color: #FFFFFF !important;
+  padding: 12px 8px;
+}
+
+th * {
+  color: #FFFFFF !important;
+}
+
+td {
+  background: var(--cream) !important;
+  color: var(--text) !important;
+  padding: 12px 8px;
+  border-bottom: 1px solid var(--gold-light);
+}
+
+td * {
+  color: var(--text) !important;
+}
+
+tr[style*="background"] td {
+  background: #FFF1D1 !important;
+  color: var(--green-dark) !important;
+}
+
+/* QURAN LESSONS */
+
+#quran-list details {
+  background: var(--cream) !important;
+  border: 1px solid var(--gold-light) !important;
+}
+
+#quran-list p,
+#quran-list span,
+#quran-list strong,
+#quran-list summary {
+  color: var(--green-dark) !important;
+}
+
+/* HADITH */
+
+.markaz-hadith-card {
+  background: var(--cream) !important;
+  color: var(--green-dark) !important;
+  border: 1px solid var(--gold-light);
+  border-radius: 18px;
+}
+
+.markaz-hadith-card p,
+.markaz-hadith-card small,
+.markaz-hadith-card [lang="ar"] {
+  color: var(--green-dark) !important;
+}
+
+/* CALENDAR */
+
+.markaz-calendar-section {
+  margin: 20px 12px;
+  overflow: hidden;
+}
+
+.markaz-calendar-section > summary {
+  color: var(--green-dark) !important;
+  font-size: 19px;
+  font-weight: 800;
+  padding: 18px 14px;
+  text-align: center;
+}
+
+.markaz-calendar-content {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  padding: 12px;
+}
+
+.markaz-calendar-today {
+  grid-column: 1 / -1;
+  background: var(--cream) !important;
+  border: 1px solid var(--gold);
+  border-radius: 16px;
+  padding: 18px 12px;
+  text-align: center;
+}
+
+.markaz-calendar-today h3 {
+  color: var(--green-dark) !important;
+}
+
+.markaz-calendar-today strong {
+  color: var(--green-dark) !important;
+  font-size: 21px;
+}
+
+.markaz-calendar-card {
+  background: var(--cream) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--gold-light);
+  border-radius: 16px;
+  padding: 16px 10px;
+  text-align: center;
+}
+
+.markaz-calendar-card h4,
+.markaz-calendar-date,
+.markaz-calendar-days {
+  color: var(--green-dark) !important;
+}
+
+.markaz-calendar-days {
+  background: var(--cream-soft);
+  border-radius: 20px;
+  padding: 8px 5px;
+  margin-top: 12px;
+  font-weight: 700;
+}
+
+.markaz-calendar-note {
+  grid-column: 1 / -1;
+  color: var(--muted) !important;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* INPUTS */
+
+input,
+textarea,
+select {
+  background: #FFFFFF;
+  color: var(--green-dark);
+  border: 1px solid var(--gold-light);
+  border-radius: 9px;
+  font-family: inherit;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #69766B;
+}
+
+/* AUDIO */
+
+audio {
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* FOOTER */
+
+footer {
+  margin-top: 30px;
+  background: var(--cream-soft);
+  color: var(--text);
+  border-top: 1px solid var(--gold-light);
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 26px;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+
+  #markaz-prayer-times {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .markaz-calendar-content {
+    grid-template-columns: 1fr;
+  }
+
   details {
-    padding: 12px;
+    padding: 10px;
   }
 
   details > summary {
     font-size: 17px;
-    line-height: 1.7;
   }
 
   td, th {
