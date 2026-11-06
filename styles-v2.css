@@ -454,3 +454,41 @@ footer {
   color: #244936 !important;
   -webkit-text-fill-color: #244936 !important;
 }
+
+/* =====================================
+   HIZB RATIB – TABLE COLOR FIX
+   ===================================== */
+
+/* جميع خلايا الجدول */
+table tbody tr,
+table tbody td {
+  background: #FFFDF8 !important;
+  color: #244936 !important;
+}
+
+/* إصلاح النصوص البيضاء داخل الخلايا */
+table tbody td,
+table tbody td *,
+table tbody td span,
+table tbody td div,
+table tbody td strong,
+table tbody td small {
+  color: #244936 !important;
+  -webkit-text-fill-color: #244936 !important;
+  text-shadow: none !important;
+  opacity: 1 !important;
+}
+
+/* الحفاظ على تمييز يوم الخميس */
+table tbody tr:has(td[style*="background"]) td,
+table tbody tr[style*="background"] td {
+  background: #FFF1D1 !important;
+}
+
+/* عناوين الجدول */
+table thead th,
+table thead th * {
+  background: #315640 !important;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+}
