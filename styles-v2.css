@@ -540,3 +540,71 @@ body {
   ) !important;
 }
 
+/* ======================================
+   MARKAZ IMAM MALIK
+   FINAL DARK TEXT FIX
+====================================== */
+
+/* Calendar and dashboard */
+.markaz-calendar-section,
+.markaz-calendar-section *,
+.markaz-dashboard,
+.markaz-dashboard *,
+.markaz-widget,
+.markaz-widget * {
+  color: #111111 !important;
+  -webkit-text-fill-color: #111111 !important;
+  text-shadow: none !important;
+}
+
+/* Quran lessons and accordion cards */
+details,
+details *,
+#quran-list,
+#quran-list *,
+#quran-lessons,
+#quran-lessons *,
+.quran-lesson,
+.quran-lesson * {
+  color: #111111 !important;
+  -webkit-text-fill-color: #111111 !important;
+  text-shadow: none !important;
+}
+
+/* All main light cards */
+.card,
+.card *,
+.mw-card,
+.mw-card *,
+.welcome-card,
+.welcome-card *,
+.markaz-hadith-card,
+.markaz-hadith-card *,
+#markaz-prayer-card,
+#markaz-prayer-card * {
+  color: #111111 !important;
+  -webkit-text-fill-color: #111111 !important;
+  text-shadow: none !important;
+}
+
+/* Light background cards */
+.markaz-calendar-section,
+.markaz-widget,
+details,
+.card,
+.mw-card,
+.welcome-card {
+  background: #FFFDF8 !important;
+}
+
+/* Keep night background */
+body {
+  background: linear-gradient(
+    180deg,
+    #050d18 0%,
+    #102544 45%,
+    #183b66 75%,
+    #050d18 100%
+  ) fixed !important;
+}
+
