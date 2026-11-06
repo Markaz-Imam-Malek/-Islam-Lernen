@@ -652,3 +652,170 @@ tr[style*="background"] td * {
 #markaz-prayer-card h3 {
   color: #B88A38 !important;
 }
+
+/* =========================================
+   MARKAZ IMAM MALIK
+   ELEGANT CREAM & GOLD DESIGN
+   ========================================= */
+
+:root {
+  --green: #244936;
+  --green-dark: #173D2C;
+  --gold: #B88A38;
+  --gold-light: #E8D5AA;
+  --cream: #FFFDF8;
+  --cream-soft: #F7F2E8;
+  --text: #244936;
+}
+
+/* الخلفية العامة */
+body {
+  background: #F7F2E8 !important;
+  color: #244936;
+}
+
+/* البطاقات الأساسية */
+.welcome-card,
+.markaz-widget,
+.markaz-dashboard,
+#markaz-prayer-card {
+  background: linear-gradient(
+    145deg,
+    #FFFDF8,
+    #F7F2E8
+  ) !important;
+  color: #244936 !important;
+  border: 1.5px solid #C6A66B !important;
+  border-radius: 22px !important;
+  box-shadow: 0 5px 18px rgba(60,45,20,.08);
+}
+
+/* بطاقة الترحيب */
+.welcome-card h1,
+.welcome-card h2,
+.welcome-card h3 {
+  color: #244936 !important;
+}
+
+.welcome-card p,
+.welcome-card strong,
+.welcome-card span {
+  color: #244936 !important;
+}
+
+/* الأقسام القابلة للفتح */
+details {
+  background: #FFFDF8 !important;
+  color: #244936 !important;
+  border: 1px solid #C6A66B !important;
+  border-radius: 16px !important;
+  margin: 12px 0;
+  padding: 14px;
+}
+
+/* عناوين القوائم */
+details > summary {
+  color: #244936 !important;
+  font-weight: 700 !important;
+  line-height: 1.8;
+  cursor: pointer;
+}
+
+details > summary *,
+details > summary strong,
+details > summary span {
+  color: #244936 !important;
+}
+
+/* النصوص داخل القوائم */
+details p,
+details li,
+details label,
+details strong {
+  color: #244936 !important;
+}
+
+/* البطاقات داخل القوائم */
+details details {
+  background: #F7F2E8 !important;
+  border: 1px solid #D9C49A !important;
+}
+
+/* عناوين الأقسام ذات الخلفية الفاتحة */
+.welcome-card h1,
+.markaz-widget h3,
+#markaz-prayer-card h2 {
+  color: #244936 !important;
+}
+
+/* جدول الحزب الراتب */
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+
+th {
+  background: #315640 !important;
+  color: #FFFFFF !important;
+}
+
+td {
+  background: #FFFDF8 !important;
+  color: #244936 !important;
+  border-bottom: 1px solid #E4D8C5;
+}
+
+td *,
+th * {
+  color: inherit !important;
+}
+
+/* صفوف الخميس المميزة */
+tr[style*="background"] td {
+  background: #FFF2D5 !important;
+  color: #244936 !important;
+}
+
+/* مواقيت الصلاة */
+#markaz-prayer-card {
+  text-align: center;
+}
+
+#markaz-prayer-card h2,
+#markaz-prayer-card h3 {
+  color: #B88A38 !important;
+}
+
+/* النصوص داخل بطاقات المواقيت */
+#markaz-prayer-times > div {
+  background: #FFFDF8 !important;
+  color: #244936 !important;
+  border: 1px solid #E8D5AA;
+}
+
+#markaz-prayer-times > div * {
+  color: #244936 !important;
+}
+
+/* أزرار الاختبارات */
+button {
+  border-radius: 12px;
+}
+
+/* تحسين القراءة على الهاتف */
+@media (max-width: 600px) {
+  details {
+    padding: 12px;
+  }
+
+  details > summary {
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  td, th {
+    padding: 10px 6px;
+    overflow-wrap: anywhere;
+  }
+}
