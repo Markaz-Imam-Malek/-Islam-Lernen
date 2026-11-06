@@ -436,3 +436,21 @@ footer {
     overflow-wrap: anywhere;
   }
 }
+
+/* WELCOME TITLE – DARK GREEN */
+
+.welcome-card h1,
+.welcome-card h2,
+.welcome-card h1 *,
+.welcome-card h2 * {
+  color: #244936 !important;
+  -webkit-text-fill-color: #244936 !important;
+  text-shadow: none !important;
+}
+
+/* Arabic and German welcome titles */
+.welcome-card [lang="ar"],
+.welcome-card [lang="de"] {
+  color: #244936 !important;
+  -webkit-text-fill-color: #244936 !important;
+}
