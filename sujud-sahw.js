@@ -632,5 +632,11 @@
   renderQuiz();
 
   /* القسم يُنشأ مرة واحدة، ثم يمكن نقله لموضعه المطلوب */
+  const target = document.getElementById("markaz-sahw-position");
+
+if (target) {
+  target.appendChild(section);
+} else {
   document.body.appendChild(section);
+}
 })();
