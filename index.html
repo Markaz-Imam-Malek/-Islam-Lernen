@@ -1232,7 +1232,26 @@ function closeMarkazLive() {
 
 <script>
 (function () {
-  const startDate = new Date(2026, 9, 19);
+  const originalStartDate = new Date(2026, 9, 19);
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+
+const cycleLength = 35; // عدد أيام الدورة
+
+const daysPassed = Math.floor(
+  (Date.UTC(today.getFullYear(), today.getMonth(), today.getDate()) -
+   Date.UTC(2026, 9, 19)) / 86400000
+);
+
+const completedCycles = Math.max(
+  0,
+  Math.floor(daysPassed / cycleLength)
+);
+
+const startDate = new Date(originalStartDate);
+startDate.setDate(
+  originalStartDate.getDate() + completedCycles * cycleLength
+);
 
   const schedule = [
     { hizb: "2",  text: "وَإِذَا لَقُوا" },
