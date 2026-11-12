@@ -877,8 +877,17 @@ function closeMarkazLive() {
     date.textContent = "Dortmund · " + data.date.readable;
     status.textContent = "تُحدَّث المواقيت عبر الإنترنت · Online aktualisiert";
 
+
+  } catch(error) {
+    status.textContent = "تعذّر تحميل المواقيت. تحقق من اتصال الإنترنت.";
+  }
+})();
+
+  </script>
+
 <div style="
-  margin-top:15px;
+  max-width:1000px;
+  margin:15px auto;
   padding:12px;
   background:#FFFDF8;
   border:1px solid #E4D8C5;
@@ -890,10 +899,10 @@ function closeMarkazLive() {
 ">
   <strong>ℹ️ Hinweis zu den Gebetszeiten</strong>
   <p>
-    Die angezeigten Gebetszeiten können von
-    unserer Mawaqit-App um wenige Minuten
-    abweichen. Bitte beachten Sie die
-    Gebetszeiten Ihrer örtlichen Moschee.
+    Die angezeigten Gebetszeiten können
+    von unserer Mawaqit-App um wenige
+    Minuten abweichen. Bitte beachten Sie
+    die Gebetszeiten Ihrer örtlichen Moschee.
   </p>
   <p dir="rtl">
     قد تختلف مواقيت الصلاة المعروضة عن
@@ -901,13 +910,6 @@ function closeMarkazLive() {
     يُرجى اعتماد مواقيت المسجد المحلي.
   </p>
 </div>
-
-  } catch(error) {
-    status.textContent = "تعذّر تحميل المواقيت. تحقق من اتصال الإنترنت.";
-  }
-})();
-
-  </script>
 
 <!-- حديث اليوم | Hadith des Tages -->
 
